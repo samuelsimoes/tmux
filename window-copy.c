@@ -573,7 +573,8 @@ window_copy_key(struct window_pane *wp, struct client *c, struct session *sess,
 	case MODEKEYCOPY_COPYPIPE:
 		if (sess != NULL) {
 			window_copy_copy_pipe(wp, sess, NULL, arg);
-			window_pane_reset_mode(wp);
+			window_copy_clear_selection(wp);
+			window_copy_redraw_screen(wp);
 			return;
 		}
 		break;
